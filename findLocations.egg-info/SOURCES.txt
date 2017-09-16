@@ -1,0 +1,9 @@
+README
+setup.py
+findLocations/__init__.py
+findLocations/addtestdata.py
+findLocations.egg-info/PKG-INFO
+findLocations.egg-info/SOURCES.txt
+findLocations.egg-info/dependency_links.txt
+findLocations.egg-info/requires.txt
+findLocations.egg-info/top_level.txt

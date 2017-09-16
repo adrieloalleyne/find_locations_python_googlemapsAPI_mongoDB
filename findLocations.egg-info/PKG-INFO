@@ -1,0 +1,93 @@
+Metadata-Version: 1.0
+Name: findLocations
+Version: 1.0
+Summary: Find Locations in a mongo database along a path using the googlemaps api
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Description: findLocations Module Documentation
+        
+        The FindLocations module can be used to find locations along a route using the Google Maps API and a mongo database.
+        
+        Usage
+        
+        Import findLocations from the  findLocations module
+        
+        from findLocations import findLocations
+                   
+        Create a new instance of the findLocations class
+        
+        fc = findLocations()
+        
+        google_auth
+        
+        google_auth takes a list of keyword arguments either a google API key Use Google Account Application key or  a client ID and Client secret to authenticate so that google APIs can be used.
+        
+        key
+        client
+        secret
+        
+        Return Values: None
+        
+        Usage
+        
+        fl.google_auth(key = "###########################################")
+        
+        getLocations
+        
+        getLocations takes a list of keyword arguments, with a start and destination address, a url for a mongo instance, a mongo database name, a collection/table name for the locations within the database which will be matched and an optional name for the new route as arguments.
+        start
+        destination
+        mongo_url
+        route_name
+        
+        
+        
+        Return Values : getLocations returns a dictionary containing the start and destination address, start and end coordinates, directions from the Google Maps API for the route and the found locations as an array of dictionaries with name, address, latitude and longitude as keys and the MongoDB object ID.
+        
+        Usage
+        
+        location_data = fl.getLocations(start = "Sydney Town Hall",destination = "Parramatta, NSW","localhost:27017")
+        
+        location_data[“start_address”] = Start Address (String)
+        location_data[“destination_address”] = Destination Address (String)
+        
+        location_data[“start”] = Start Cordinates eg. {u'lat': -33.872757, u'lng': 151.2060617}
+        
+        location_data[“destination”] = Destination Cordinates eg. {u'lat': -33.872757, u'lng': 151.2060617}
+        
+        location_data[“_id”] = The MongoDB object ID.
+        
+        location_data[“locations”] = List of locations *
+        
+        location_data[“route”] = A list of lat /lon dictionaries eg. [{u'lat': -33.872757, u'lng': 151.2060617}]
+        
+        location_data[“route_name”] = The optional route_name (String) Default: - None or “”
+        
+        
+        Each location item in location_data[“locations”] has the Location name and the Address from the database as well as the lat and long coordinates as floating point numbers.
+        
+        location["name"]
+        location["address"]
+        location["Nw-lat"]
+        location["nw-long"]
+        
+        Saved routes in the MongoDB database are stored 
+        in the location_routes collection:
+        
+        locationdb.location_routes
+        
+        Installation (Windows)
+        
+        Requirements
+              -     MongoDB 3.4 or greater recomended.
+        Python 2.7 or greater
+        Virtualenv recommended but not required
+        
+        Instructions
+        1) Extract the findLocations archive
+        2) Open a shell (cmd.exe or powershell in windows, bash in Linux)
+        3) cd to the FindLocations folder
+        4) Run python setup.py install
+Platform: UNKNOWN
